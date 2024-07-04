@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absensi Bina Informatik</title>
+    <style>
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f9; /* Warna dasar biru muda */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Main container styling */
+        .container {
+            background-color: #ffffff; /* Warna dasar putih */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        /* Header styling */
+        h2 {
+            color: #1a237e; /* Warna biru tua */
+            margin-bottom: 20px;
+        }
+
+        /* Form styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-size: 18px;
+            color: #283593; /* Warna biru gelap */
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="date"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 300px;
+            font-size: 16px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Button styling */
+        button {
+            padding: 12px 30px;
+            background-color: #1a237e; /* Warna biru tua */
+            color: #ffffff; /* Warna teks putih */
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0d47a1; /* Warna biru tua lebih gelap saat hover */
+        }
+
+        /* Absensi list styling */
+        .absensi-list {
+            margin-top: 30px;
+            text-align: left;
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+
+        .absensi-item {
+            margin-bottom: 10px;
+        }
+
+        /* Animasi fadeIn */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Absensi Bina Informatik</h2>
+        <form id="absensi-form">
+            <label for="nama">Nama:</label>
+            <input type="text" id="nama" name="nama" required><br><br>
+            <label for="tanggal">Tanggal Absen:</label>
+            <input type="date" id="tanggal" name="tanggal" required><br><br>
+            <button type="submit">Absen</button>
+        </form>
+        <div class="absensi-list" id="absensi-list">
+            <!-- Absensi items will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('absensi-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var nama = document.getElementById('nama').value;
+            var tanggal = document.getElementById('tanggal').value;
+
+            // Create absensi item
+            var absensiItem = document.createElement('div');
+            absensiItem.classList.add('absensi-item');
+            absensiItem.innerHTML = `<strong>${nama}</strong> absen pada tanggal ${tanggal}`;
+
+            // Append absensi item to absensi list
+            var absensiList = document.getElementById('absensi-list');
+            absensiList.appendChild(absensiItem);
+
+            // Clear form fields
+            document.getElementById('nama').value = '';
+            document.getElementById('tanggal').value = '';
+        });
+    </script>
+</body>
+</html>
